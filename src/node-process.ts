@@ -3,12 +3,12 @@ import path from 'path';
 
 import { Worker } from 'worker_threads';
 
-interface ProcessConfig {
+interface NodeProcessConfig {
   maxWorkers: number;
   worker: (data:any) => Promise<any>;
 }
 
-export default class Process {
+export default class NodeProcess {
   private maxWorkers: number;
 
   private worker: (data:any) => Promise<any>;
@@ -17,7 +17,7 @@ export default class Process {
 
   private waiting: ((worker: Worker) => void)[] = [];
 
-  constructor(cfg: ProcessConfig) {
+  constructor(cfg: NodeProcessConfig) {
     this.maxWorkers = cfg.maxWorkers;
     this.worker = cfg.worker;
 
